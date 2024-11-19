@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D 5E Character Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+        .section {
+            background-color: rgb(221, 236, 230);
+            margin: 5px;
+            padding: 7px;
+            border: 2px solid #2b332b;
+            font-size: 12px;
+            width: 100%;
+        }
+        .sectionCollapse {
+            background-color: rgb(221, 236, 230);
+            margin: 5px;
+            padding: 0px;
+            border: 2px solid #2b332b;
+            font-size: 12px;
+            width: 100%;
+        }
+        .collapsible {
+            background-color: rgb(78, 122, 104);
+            margin: 5px;
+            padding: 5px;
+            border: 2px solid #2b332b;
+            font-size: small;
+            color: white;
+            width: 100%;
+        }
+        .collapseSection {
+            max-height: 0;
+            transition: max-height 0.5s ease-out;
+            overflow: hidden;
+            padding: 0px 5px 0px 5px;
+            background-color: rgb(221, 236, 230);
+            margin: 0px 5px 0px 5px;
+            font-size: 12px;
+            width: 100%;
+        }
+        img {
+            width: 100%;
+        }
+        .center {
+            display: block;
+            font-size: small;
+            margin: 5px;
+            padding: 5px;
+            width: 100%;
+        }
+        body {
+            background-image: url("img/background2.JPG");
+        }
+        button {
+            background-color: #79544e;
+            color: white;
+        }
+        .buttonSpace {
+            margin: 2px;
+        }
+        .highlight {
+            background-color: rgb(78, 122, 104);
+            color: white;
+            border: 2px solid #2b332b;
+        }
+        p {
+            margin: 1px;
+            padding: 4px;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row g-2">
+<!--FIRST COLUMN-->
+            <div class="col-xl-1 col-lg-2 col-md-3 col-sm-4 col-5">
+                <button type="button" class="center"><a href="roadmap.html" target="_blank">Roadmap (V 1.0)</a></button>
+                <button type="button" class="collapsible">Races</button>
+                <div class="collapseSection" name="raceArrayCreatorDiv">
+                    <p><i>uncheck to remove option</i></p>
+                    <br>
+                    <button name="raceClearButton" class="buttonSpace">Clear all</button>
+                    <button name="raceCheckButton" class="buttonSpace">Check all</button>
+                    <br>
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator" value="dwarf" checked> Dwarf
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="elf" checked> Elf
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="halfling" checked> Halfling
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="human" checked> Human
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="dragonborn" checked> Dragonborn
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="gnome" checked> Gnome
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="half-elf" checked> Half-elf
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="half-orc" checked> Half-orc
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="tiefling" checked> Tiefling
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="aarakocra" checked> Aarakocra
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="aasimar" checked> Aasimar
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="bugbear" checked> Bugbear
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="centaur" checked> Centaur
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="changeling" checked> Changeling
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="deep gnome" checked> Deep gnome
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="duergar" checked> Duergar
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="eladrin" checked> Eladrin
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="fairy" checked> Fairy
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="firbolg" checked> Firbolg
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="genasi" checked> Genasi
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="githyanki" checked> Githyanki
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="githzerai" checked> Githzerai
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="goblin" checked> Goblin
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="goliath" checked> Goliath
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="harengon" checked> Harengon
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="hobgoblin" checked> Hobgoblin
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="kenku" checked> Kenku
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="kobold" checked> Kobold
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="lizardfolk" checked> Lizardfolk
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="minotaur" checked> Minotaur
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="orc" checked> Orc
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="satyr" checked> Satyr
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="sea elf" checked> Sea elf
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="shadar-kai" checked> Shadar-kai
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="shifter" checked> Shifter
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="tabaxi" checked> Tabaxi
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="tortle" checked> Tortle
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="triton" checked> Triton
+                    <br>
+                    <input type="checkbox" name="raceArrayCreator"  value="yuan-ti" checked> Yuan-ti
+                    <br>
+                    <br>
+                </div>
+                <button type="button" class="collapsible">Classes</button>
+                <div class="collapseSection" name="classArrayCreatorDiv">
+                    <p><i>uncheck to remove option</i></p>
+                    <br>
+                    <button name="classClearButton" class="buttonSpace">Clear all</button>
+                    <button name="classCheckButton" class="buttonSpace">Check all</button>
+                    <br>
+                    <br>
+                    <input type="checkbox" name="classArrayCreator" value="barbarian" checked> Barbarian
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="bard" checked> Bard
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="cleric" checked> Cleric
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="druid" checked> Druid
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="fighter" checked> Fighter
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="monk" checked> Monk
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="paladin" checked> Paladin
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="ranger" checked> Ranger
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="rogue" checked> Rogue
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="sorcerer" checked> Sorcerer
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="warlock" checked> Warlock
+                    <br>
+                    <input type="checkbox" name="classArrayCreator"  value="wizard" checked> Wizard
+                    <br>
+                    <br>
+                </div>
+                <button type="button" class="collapsible">Backgrounds</button>
+                <div class="collapseSection" name="backgroundArrayCreatorDiv">
+                    <p><i>uncheck to remove option</i></p>
+                    <br>
+                    <button name="backgroundClearButton" class="buttonSpace">Clear all</button>
+                    <button name="backgroundCheckButton" class="buttonSpace">Check all</button>
+                    <br>
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="acolyte" checked> Acolyte
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="charlatan" checked> Charlatan
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="criminal" checked> Criminal
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="entertainer" checked> Entertainer
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="folk hero" checked> Folk hero
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="guild artisan" checked> Guild artisan
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="hermit" checked> Hermit
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="noble" checked> Noble
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="outlander" checked> Outlander
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="sage" checked> Sage
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="sailor" checked> Sailor
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="soldier" checked> Soldier
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="urchin" checked> Urchin
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="anthropologist" checked> Anthropologist
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="archaeologist" checked> Archaeologist
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="athlete" checked> Athlete
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="fisher" checked> Fisher
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="smuggler" checked> Smuggler
+                    <br>
+                    <br>
+                </div>
+                <button type="button" class="collapsible">Alignments</button>
+                <div class="collapseSection" name="alignmentArrayCreatorDiv">
+                    <p><i>uncheck to remove option</i></p>
+                    <br>
+                    <button name="alignmentClearButton" class="buttonSpace">Clear all</button>
+                    <button name="alignmentCheckButton" class="buttonSpace">Check all</button>
+                    <br>
+                    <br>
+                    <input type="checkbox" name="alignmentArrayCreator"  value="lawful good" checked> Lawful good
+                    <br>
+                    <input type="checkbox" name="alignmentArrayCreator"  value="lawful neutral" checked> Lawful neutral
+                    <br>
+                    <input type="checkbox" name="alignmentArrayCreator"  value="lawful evil" checked> Lawful evil
+                    <br>
+                    <input type="checkbox" name="alignmentArrayCreator"  value="neutral good" checked> Neutral good
+                    <br>
+                    <input type="checkbox" name="alignmentArrayCreator"  value="true neutral" checked> True neutral
+                    <br>
+                    <input type="checkbox" name="alignmentArrayCreator"  value="neutral evil" checked> Neutral evil
+                    <br>
+                    <input type="checkbox" name="alignmentArrayCreator"  value="chaotic good" checked> Chaotic good
+                    <br>
+                    <input type="checkbox" name="alignmentArrayCreator"  value="chaotic neutral" checked> Chaotic neutral
+                    <br>
+                    <input type="checkbox" name="alignmentArrayCreator"  value="chaotic evil" checked> Chaotic evil
+                    <br>
+                    <br>
+                </div>
+                <button type="button" class="collapsible">Trinkets</button>
+                <div class="collapseSection">
+                    <p><i>uncheck to remove option</i></p>
+                    <br>
+                    <input type="checkbox" id="trinkets" checked> Include a trinket?
+                    <br>
+                    <br>
+                </div>
+                <button type="button" class="collapsible">Magic items</button>
+                <div class="collapseSection">
+                    <p><i>uncheck to remove option</i></p>
+                    <br>
+                    <input type="checkbox" id="magicItemAdd" checked> Include magic item chance?
+                    <br>
+                    <br>
+                    <p><i>rare - 5%</i><br>
+                    <i>uncommon - 10%</i><br>
+                    <i>common - 25%</i><br>
+                    <i>nothing - 60%</i>
+                    <br>
+                    <br>
+                    </p>
+                </div>
+                <div class="section">
+                    <p id="race2"></p>
+                    <p id="background2"></p>
+                    <p id="class2"></p>
+                </div>
+                <div class="section">
+                    <p id="strength"><b>Strength:</b></p>
+                    <p id="dexterity"><b>Dexterity:</b></p>
+                    <p id="constitution"><b>Constitution:</b></p>
+                    <p id="intelligence"><b>Intelligence:</b></p>
+                    <p id="wisdom"><b>Wisdom:</b></p>
+                    <p id="charisma"><b>Charisma:</b></p>
+                </div>
+            </div>
+<!--SECOND COLUMN-->
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-8 col-7">
+                <button type="button" id="randomize" class="center">Create!</button>
+                <div>
+                    <img id="raceImage" src="" class="center">
+                </div>
+                <div class="section">
+                    <p id="hp"><b>Hit points: </b></p>
+                </div>
+                <div class="section">
+                    <p id="age"><b>Age:</b></p>
+                </div>
+                <div class="section">
+                    <p id="size"><b>Size:</b></p>
+                </div>
+                <div class="section">
+                    <p id="speed"><b>Walk: </b></p>
+                </div>
+                <div class="section">
+                    <p id="initiative"><b>Initiative modifier:</b></p>
+                </div>
+                <div class="section">
+                    <p id="savingThrows"><b>Saving throws: </b></p>
+                </div>
+            </div>
+<!--THIRD COLUMN-->
+            <div class="col-xl-3 col-lg-6 col-md-5 col-sm-12 col-12">
+                <div class="section">
+                    <p id="alignment"><b>Alignment:</b></p>
+                </div>
+                <div class="section">
+                    <p id="type"><b>Creature type:</b></p>
+                </div>
+                <div class="section">
+                    <p id="languages"><b>Languages: </b></p>
+                </div>
+                <div class="section">
+                    <p id="characteristic"><b>Characteristics:</b></p>
+                </div>
+                <div class="section">
+                    <p id="trait"><b>Personality trait:</b></p>
+                </div>
+                <div class="section">
+                    <p id="bond"><b>Bond:</b></p>
+                </div>
+                <div class="section">
+                    <p id="flaw"><b>Flaw:</b></p>
+                </div>
+                <div class="section">
+                    <p id="ideal"><b>Ideal:</b></p>
+                </div>
+                <div class="section">
+                    <p id="tools"><b>Tool proficiencies: </b></p>
+                </div>
+                <div class="section">
+                    <p id="skills"><b>Skill proficiencies: </b></p>
+                </div>
+                <div class="section">
+                    <p id="armor"><b>Armor proficiencies: </b></p>
+                    <p id="armorSub"></p>
+                </div>
+                <div class="section">
+                    <p id="weapons"><b>Weapon proficiencies: </b></p>
+                </div>
+                <div class="section">
+                    <p id="equipment"><b>Equipment:</b></p>
+                </div>
+            </div>
+<!--FOURTH COLUMN-->
+            <div class="col-xl-6 col-12">
+                <div class="section">
+                    <p id="race" class="highlight"><b>Race:</b></p>
+                    <p id="sub"></p>
+                    <p id="subsub"></p>
+                    <p id="raceTrait"></p>
+                </div>
+                <div class="section">
+                    <p id="background" class="highlight"><b>Background:</b></p>
+                    <p id="backgroundSub"></p>
+                </div>
+                <div class="section">
+                    <p id="class" class="highlight"><b>Class:</b></p>
+                    <p id="domain"></p>
+                    <p id="subclass"></p>
+                    <p id="subclass2"></p>
+                    <p id="classTraits"></p>
+                    <p id="cantrips"><b>Cantrips:</b></p>
+                    <p id="spells"><b>Spells:</b></p>
+                    <p id="spellNotes"></p>
+                    <p id="spellcastingAbility"></p>
+                    <p id="spellSave"></p>
+                    <p id="spellAttack"></p>
+                </div>
+            </div>
+    </div>
+    <script src="js/d&dgenerator.js"></script>
+</body>
+</html>
