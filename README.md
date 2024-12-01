@@ -16,9 +16,13 @@ Magic item toggle lists added, with checkboxes. The Magic item chance tab determ
 Background alternates added:
 
 Spy
+
 Gladiator
+
 Guild merchant
+
 Knight
+
 Pirate
 
 
