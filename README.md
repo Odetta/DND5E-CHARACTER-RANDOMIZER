@@ -30,23 +30,43 @@ Pirate
 possible future additions
 
 additional backgrounds
+
 trinket toggle
+
 cantrip toggle
+
 spell toggle
+
 magic item percentage customization
+
 AC and equipped armor
+
 attack options display (melee, ranged, damage spells, etc)
+
 deity options toggle
+
 tasha's cauldron spells
+
 tasha's cauldron class additions
+
 artificer class
+
 blood hunter class
+
 mystic class
+
 eberron races (kalashtar, warforged)
+
 ravnica races (loxodon, simic hybrid, vedalken, viashino)
+
 ravenloft races (dhampir, hexblood, reborn)
+
 plane shift races (aetherborn, aven, khenra, kor, merfolk, naga, siren, vampire)
+
 miscellaneous races (gith, glitchling, grung, hollow one, kender, leonin, locathahm, revenant, verdan)
+
 spelljammer races (astral elf, autognome, giff, hadozee, plasmoid, thri-kreen)
+
 save character option
+
 select character level option or "randomize level up" option
