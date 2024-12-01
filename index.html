@@ -59,6 +59,15 @@
             background-color: #79544e;
             color: white;
         }
+        .buttonInner {
+            background-color: #79544e;
+            color: white;
+            margin: 5px;
+            display: block;
+            font-size: small;
+            padding: 5px;
+            width: 95%;
+        }
         .buttonSpace {
             margin: 2px;
         }
@@ -75,6 +84,30 @@
             color: white;
             text-decoration: none;
         }
+        .accordion {
+            background-color: #eee;
+            color: #000000;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+        }
+        .accordion:hover {
+            background-color: #ccc;
+        }
+        .active {
+            background-color: #79544e;
+        }
+        .panel {
+            background-color: white;
+            max-height: 0;
+            overflow-y: scroll;
+            transition: max-height 0.2s ease-out;
+        }
+
 
     </style>
 </head>
@@ -82,9 +115,9 @@
     <div class="container-fluid">
         <div class="row g-2">
 <!--FIRST COLUMN-->
-            <div class="col-xl-1 col-lg-2 col-md-3 col-sm-4 col-5">
+            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-5">
                 <button type="button" class="center"><a href="roadmap.html" target="_blank">Readme/
-                    Roadmap</a></button>
+                    Roadmap V1.1</a></button>
                 <button type="button" class="collapsible">Races</button>
                 <div class="collapseSection" name="raceArrayCreatorDiv">
                     <p><i>uncheck to remove option</i></p>
@@ -251,6 +284,16 @@
                     <br>
                     <input type="checkbox" name="backgroundArrayCreator"  value="smuggler" checked> Smuggler
                     <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="spy" checked> Spy
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="gladiator" checked> Gladiator
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="guild merchant" checked> Guild merchant
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="knight" checked> Knight
+                    <br>
+                    <input type="checkbox" name="backgroundArrayCreator"  value="pirate" checked> Pirate
+                    <br>
                     <br>
                 </div>
                 <button type="button" class="collapsible">Alignments</button>
@@ -289,7 +332,7 @@
                     <br>
                     <br>
                 </div>
-                <button type="button" class="collapsible">Magic items</button>
+                <button type="button" class="collapsible">Magic item chance</button>
                 <div class="collapseSection">
                     <p><i>uncheck to remove option</i></p>
                     <br>
@@ -304,43 +347,423 @@
                     <br>
                     </p>
                 </div>
-                <div class="section">
-                    <p id="race2"></p>
-                    <p id="background2"></p>
-                    <p id="class2"></p>
+                <button type="button" class="collapsible">Magic item common</button>
+                <div class="collapseSection" name="magicItemCommonArrayCreatorDiv">
+                    <p><i>uncheck to remove option</i></p>
+                    <br>
+                    <button name="magicItemCommonClearButton" class="buttonSpace">Clear all</button>
+                    <button name="magicItemCommonCheckButton" class="buttonSpace">Check all</button>
+                    <br>
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="potion of climbing" checked> Potion of climbing
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="potion of healing" checked> Potion of healing
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: acid splash" checked> Spell scroll: acid splash
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: blade ward" checked> Spell scroll: blade ward
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: chill touch" checked> Spell scroll: chill touch
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: friends" checked> Spell scroll: friends
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: mage hand" checked> Spell scroll: mage hand
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: poison spray" checked> Spell scroll: poison spray
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: ray of frost" checked> Spell scroll: ray of frost
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: shocking grasp" checked> Spell scroll: shocking grasp
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: true strike" checked> Spell scroll: true strike
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: bless" checked> Spell scroll: bless
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: burning hands" checked> Spell scroll: burning hands
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: chromatic orb" checked> Spell scroll: chromatic orb
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: command" checked> Spell scroll: command
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: cure wounds" checked> Spell scroll: cure wounds
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: detect magic" checked> Spell scroll: detect magic
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: feather fall" checked> Spell scroll: feather fall
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: hex" checked> Spell scroll: hex
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: jump" checked> Spell scroll: jump
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: longstrider" checked> Spell scroll: longstrider
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: mage armor" checked> Spell scroll: mage armor
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: magic missile" checked> Spell scroll: magic missile
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: ray of sickness" checked> Spell scroll: ray of sickness
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: shield" checked> Spell scroll: shield
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: sleep" checked> Spell scroll: sleep
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: thunderwave" checked> Spell scroll: thunderwave
+                    <br>
+                    <input type="checkbox" name="commonMagicItemArrayCreator"  value="spell scroll: witch bolt" checked> Spell scroll: witch bolt
+                    <br>
+                    <br>
                 </div>
-                <div class="section">
-                    <p id="strength"><b>Strength:</b></p>
-                    <p id="dexterity"><b>Dexterity:</b></p>
-                    <p id="constitution"><b>Constitution:</b></p>
-                    <p id="intelligence"><b>Intelligence:</b></p>
-                    <p id="wisdom"><b>Wisdom:</b></p>
-                    <p id="charisma"><b>Charisma:</b></p>
+                <button type="button" class="collapsible">Magic item uncommon</button>
+                <div class="collapseSection" name="magicItemUncommonArrayCreatorDiv">
+                    <p><i>uncheck to remove option</i></p>
+                    <br>
+                    <button name="magicItemUncommonClearButton" class="buttonSpace">Clear all</button>
+                    <button name="magicItemUncommonCheckButton" class="buttonSpace">Check all</button>
+                    <br>
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="alchemy jug" checked> Alchemy jug
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="amulet of proof against detection and location" checked> Amulet of proof against detection and location
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="bag of holding" checked> Bag of holding
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="bag of tricks" checked> Bag of tricks
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="boots of elvenkind" checked> Boots of elvenkind
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="boots of striding and springing" checked> Boots of striding and springing
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="boots of the winterlands" checked> Boots of the winterlands
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="bracers of archery" checked> Bracers of archery
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="brooch of shielding" checked> Brooch of shielding
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="broom of flying" checked> Broom of flying
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="cap of water breathing" checked> Cap of water breathing
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="circlet of blasting" checked> Circlet of blasting
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="cloak of elvenkind" checked> Cloak of elvenkind
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="cloak of protection" checked> Cloak of protection
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="cloak of the manta ray" checked> Cloak of the manta ray
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="decanter of endless water" checked> Decanter of endless water
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="deck of illusions" checked> Deck of illusions
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="driftglobe" checked> Driftglobe
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="dust of disappearance" checked> Dust of disappearance
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="dust of dryness" checked> Dust of dryness
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="dust of sneezing and choking" checked> Dust of sneezing and choking
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="elemental gem" checked> Elemental gem
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="eversmoking bottle" checked> Eversmoking bottle
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="eyes of charming" checked> Eyes of charming
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="eyes of minute seeing" checked> Eyes of minute seeing
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="eyes of the eagle" checked> Eyes of the eagle
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="gauntlets of ogre power" checked> Gauntlets of ogre power
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="gem of brightness" checked> Gem of brightness
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="gloves of missile snaring" checked> Gloves of missile snaring
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="gloves of swimming and climbing" checked> Gloves of swimming and climbing
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="gloves of thievery" checked> Gloves of thievery
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="goggles of night" checked> Goggles of night
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="hat of disguise" checked> Hat of disguise
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="headband of intellect" checked> Headband of intellect
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="helm of comprehending languages" checked> Helm of comprehending languages
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="helm of telepathy" checked> Helm of telepathy
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="immovable rod" checked> Immovable rod
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="Keoghtom's ointment" checked> Keoghtom's ointment
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="lantern of revealing" checked> Lantern of revealing
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="medallion of thoughts" checked> Medallion of thoughts
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="necklace of adaptation" checked> Necklace of adaptation
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="oil of slipperiness" checked> Oil of slipperiness
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="pearl of power" checked> Pearl of power
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="periapt of health" checked> Periapt of health
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="periapt of wound closure" checked> Periapt of wound closure
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="philter of love" checked> Philter of love
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="pipes of haunting" checked> Pipes of haunting
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="pipes of the sewers" checked> Pipes of the sewers
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="potion of animal friendship" checked> Potion of animal friendship
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="potion of fire breath" checked> Potion of fire breath
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="potion of growth" checked> Potion of growth
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="potion of greater healing" checked> Potion of greater healing
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="potion of poison" checked> Potion of poison
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="potion of resistance" checked> Potion of resistance
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="potion of water breathing" checked> Potion of water breathing
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="quiver of Ehlonna" checked> Quiver of Ehlonna
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="ring of jumping" checked> Ring of jumping
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="ring of mind shielding" checked> Ring of mind shielding
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="ring of swimming" checked> Ring of swimming
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="ring of warmth" checked> Ring of warmth
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="ring of water walking" checked> Ring of water walking
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="robe of useful items" checked> Robe of useful items
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="rope of climbing" checked> Rope of climbing
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="saddle of the cavalier" checked> Saddle of the cavalier
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="sending stones" checked> Sending stones
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="slippers of spider climbing" checked> Slippers of spider climbing
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="stone of good luck" checked> Stone of good luck
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="wind fan" checked> Wind fan
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: alter self" checked> Spell scroll: alter self
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: blur" checked> Spell scroll: blur
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: cloud of daggers" checked> Spell scroll: cloud of daggers
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: darkness" checked> Spell scroll: darkness
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: hold person" checked> Spell scroll: hold person
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: invisibility" checked> Spell scroll: invisibility
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: levitate" checked> Spell scroll: levitate
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: locate object" checked> Spell scroll: locate object
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: ray of enfeeblement" checked> Spell scroll: ray of enfeeblement
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: scorching ray" checked> Spell scroll: scorching ray
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: suggestion" checked> Spell scroll: suggestion
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: animate dead" checked> Spell scroll: animate dead
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: blink" checked> Spell scroll: blink
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: clairvoyance" checked> Spell scroll: clairvoyance
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: dispel magic" checked> Spell scroll: dispel magic
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: fireball" checked> Spell scroll: fireball
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: fly" checked> Spell scroll: fly
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: gaseous form" checked> Spell scroll: gaseous form
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: haste" checked> Spell scroll: haste
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: lightning bolt" checked> Spell scroll: lightning bolt
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: revivify" checked> Spell scroll: revivify
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: thunder step" checked> Spell scroll: thunder step
+                    <br>
+                    <input type="checkbox" name="uncommonMagicItemArrayCreator"  value="spell scroll: water walk" checked> Spell scroll: water walk
+                    <br>
+                    <br>
+                </div>
+                <button type="button" class="collapsible">Magic item rare</button>
+                <div class="collapseSection" name="magicItemRareArrayCreatorDiv">
+                    <p><i>uncheck to remove option</i></p>
+                    <br>
+                    <button name="magicItemRareClearButton" class="buttonSpace">Clear all</button>
+                    <button name="magicItemRareCheckButton" class="buttonSpace">Check all</button>
+                    <br>
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="amulet of health" checked> Amulet of health
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="bag of beans" checked> Bag of beans
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="bead of force" checked> Bead of force
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="belt of dwarvenkind" checked> Belt of dwarvenkind
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="boots of levitation" checked> Boots of levitation
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="boots of speed" checked> Boots of speed
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="bowl of commanding water elementals" checked> Bowl of commanding water elementals
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="bracers of defense" checked> Bracers of defense
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="brazier of commanding fire elementals" checked> Brazier of commanding fire elementals
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="cape of the mountebank" checked> Cape of the mountebank
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="censer of controlling air elementals" checked> Censer of controlling air elementals
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="chime of opening" checked> Chime of opening
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="cloak of displacement" checked> Cloak of displacement
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="cloak of the bat" checked> Cloak of the bat
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="cube of force" checked> Cube of force
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="Daern's instant fortress" checked> Daern's instant fortress
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="dimensional shackles" checked> Dimensional shackles
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="elixir of health" checked> Elixir of health
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="folding boat" checked> Folding boat
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="gem of seeing" checked> Gem of seeing
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="helm of teleportation" checked> Helm of teleportation
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="Heward's handy haversack" checked> Heward's handy haversack
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="horn of blasting" checked> Horn of blasting
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="horseshoes of speed" checked> Horseshoes of speed
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="iron bands of bilarro" checked> Iron bands of bilarro
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="mantle of spell resistance" checked> Mantle of spell resistance
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="necklace of fireballs" checked> Necklace of fireballs
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="oil of etherealness" checked> Oil of etherealness
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="periapt of proof against poison" checked> Periapt of proof against poison
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="portable hole" checked> Portable hole
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="potion of clairvoyance" checked> Potion of clairvoyance
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="potion of diminution" checked> Potion of diminution
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="potion of gaseous form" checked> Potion of gaseous form
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="potion of superior healing" checked> Potion of superior healing
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="potion of heroism" checked> Potion of heroism
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="potion of invulnerability" checked> Potion of invulnerability
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="potion of mind reading" checked> Potion of mind reading
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="Quaal's feather token" checked> Quaal's feather token
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="ring of animal influence" checked> Ring of animal influence
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="ring of evasion" checked> Ring of evasion
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="ring of feather falling" checked> Ring of feather falling
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="ring of free action" checked> Ring of free action
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="ring of protection" checked> Ring of protection
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="ring of resistance" checked> Ring of resistance
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="ring of the ram" checked> Ring of the ram
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="ring of x-ray vision" checked> Ring of x-ray vision
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="robe of eyes" checked> Robe of eyes
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="rope of entanglement" checked> Rope of entanglement
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="scroll of protection" checked> Scroll of protection
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="stone of controlling earth elementals" checked> Stone of controlling earth elementals
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="spell scroll: banishment" checked> Spell scroll: banishment
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="spell scroll: blight" checked> Spell scroll: blight
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="spell scroll: ice storm" checked> Spell scroll: ice storm
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="spell scroll: polymorph" checked> Spell scroll: polymorph
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="spell scroll: stoneskin" checked> Spell scroll: stoneskin
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="spell scroll: dominate person" checked> Spell scroll: dominate person
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="spell scroll: reincarnate" checked> Spell scroll: reincarnate
+                    <br>
+                    <input type="checkbox" name="rareMagicItemArrayCreator"  value="spell scroll: telekinesis" checked> Spell scroll: telekinesis
+                    <br>
+                    <br>
                 </div>
             </div>
 <!--SECOND COLUMN-->
-            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-8 col-7">
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-8 col-7">
                 <button type="button" id="randomize" class="center">Create!</button>
                 <div>
                     <img id="raceImage" src="" class="center">
                 </div>
-                <div class="section">
-                    <p id="hp"><b>Hit points: </b></p>
+                <div class="row g-2 section">
+                    <div class="col">
+                        <p id="race2"><b>Race:</b></p>
+                        <p id="background2"><b>Background:</b></p>
+                        <p id="class2"><b>Class:</b></p>
+                        <p id="size"><b>Size:</b></p>
+                        <p id="age"><b>Age:</b></p>
+                        <p id="speed"><b>Walk:</b></p>
+                    </div>
+                    <div class="col">
+                        <p id="strength"><b>Strength:</b></p>
+                        <p id="dexterity"><b>Dexterity:</b></p>
+                        <p id="constitution"><b>Constitution:</b></p>
+                        <p id="intelligence"><b>Intelligence:</b></p>
+                        <p id="wisdom"><b>Wisdom:</b></p>
+                        <p id="charisma"><b>Charisma:</b></p>
+                    </div>
+                </div>
+                <div class="row g-2 section">
+                    <div id="hp" class="col" style="margin-top: 5px; margin-bottom: 5px; margin-left: 5px"><b>Hit points:</b>
+                    </div>
+                    <div id="initiative" class="col" style="margin-top: 5px; margin-bottom: 5px; margin-left: 5px"><b>Initiative mod:</b>
+                    </div>
                 </div>
                 <div class="section">
-                    <p id="age"><b>Age:</b></p>
-                </div>
-                <div class="section">
-                    <p id="size"><b>Size:</b></p>
-                </div>
-                <div class="section">
-                    <p id="speed"><b>Walk: </b></p>
-                </div>
-                <div class="section">
-                    <p id="initiative"><b>Initiative modifier:</b></p>
-                </div>
-                <div class="section">
-                    <p id="savingThrows"><b>Saving throws: </b></p>
+                    <p id="savingThrows" style="margin-left: 5px"><b>Saving throws: </b></p>
                 </div>
             </div>
 <!--THIRD COLUMN-->
@@ -387,7 +810,7 @@
                 </div>
             </div>
 <!--FOURTH COLUMN-->
-            <div class="col-xl-6 col-12">
+            <div class="col-xl-4 col-12">
                 <div class="section">
                     <p id="race" class="highlight"><b>Race:</b></p>
                     <p id="sub"></p>

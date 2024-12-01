@@ -46,6 +46,7 @@
 //XIX. WARLOCK OTHERWORLDLY PATRON
 //XX. TRINKETS
 //XXI. MAGIC ITEMS
+//  a. COMMON
 //XXII. GAMING SETS
 //XXIII. LAND VEHICLES
 //XXIV. WATER VEHICLES
@@ -111,6 +112,21 @@ for (i = 0; i < coll.length; i++) {
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
     } 
+  });
+}
+
+let acc = document.getElementsByClassName("accordion");
+let a;
+
+for (a = 0; a < acc.length; a++) {
+  acc[a].addEventListener("click", function() {
+    this.classList.toggle("active");
+    let panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
   });
 }
 
@@ -499,11 +515,100 @@ const trinkets = ["a shard of obsidian that always feels warm to the touch","a m
 "a four-leaf clover pressed inside a book discussing manners and etiquette","a glass jar containing lard with a label that reads, 'Griffon Grease'","a sheet of parchment upon which is drawn a complex mechanical contraption","a wooden box with a ceramic bottom that holds a living worm with a head on each end of its body","an ornate scabbard that fits no blade you have found so far","a metal urn containing the ashes of a hero"];
 
 //XXI. MAGIC ITEMS
-const magicItemCommon = ["potion of climbing","potion of healing","spell scroll: acid splash","spell scroll: blade ward","spell scroll: chill touch","spell scroll: friends","spell scroll: mage hand","spell scroll: poison spray","spell scroll: ray of frost","spell scroll: shocking grasp","spell scroll: true strike","spell scroll: bless","spell scroll: burning hands","spell scroll: chromatic orb","spell scroll: command","spell scroll: cure wounds","spell scroll: detect magic","spell scroll: feather fall","spell scroll: hex","spell scroll: jump","spell scroll: longstrider","spell scroll: mage armor","spell scroll: magic missile","spell scroll: ray of sickness","spell scroll: shield","spell scroll: sleep","spell scroll: thunderwave","spell scroll: witch bolt"];
+//a. COMMON
+let checkedMagicItemCommon = document.querySelectorAll("[name='magicItemCommonArrayCreator']");
+let magicItemCommon = [];
+function createMagicItemCommonArray() {
+  magicItemCommon = [];
+  let checkedMagicItemCommonBox = document.querySelectorAll("div[name='magicItemCommonArrayCreatorDiv'] > [type='checkbox']:checked");
+  checkedMagicItemCommonBox.forEach(function(item) {
+    magicItemCommon.push(item.value);
+  });
+}
+createMagicItemCommonArray();
+checkedMagicItemCommon.forEach(function(item) {
+  item.addEventListener("change", function() {
+    createMagicItemCommonArray();
+  });
+});
+//// CLEAR ALL
+function uncheckAllMagicItemCommon() {
+    document.querySelectorAll("div[name='magicItemCommonArrayCreatorDiv'] > [type='checkbox']:checked")
+      .forEach(item => item.checked = false);
+      createMagicItemCommonArray();
+  }
+document.querySelector("[name='magicItemCommonClearButton']").addEventListener('click', uncheckAllMagicItemCommon)
+//// CHECK ALL
+function checkAllMagicItemCommon() {
+    document.querySelectorAll("div[name='magicItemCommonArrayCreatorDiv'] > [type='checkbox']")
+      .forEach(item => item.checked = true);
+      createMagicItemCommonArray();
+    }
+document.querySelector("[name='magicItemCommonCheckButton']").addEventListener('click', checkAllMagicItemCommon)
 
-const magicItemUncommon = ["alchemy jug","amulet of proof against detection and location","bag of holding","bag of tricks","boots of elvenkind","boots of striding and springing","boots of the winterlands","bracers of archery","brooch of shielding","broom of flying","cap of water breathing","circlet of blasting","cloak of elvenkind","cloak of protection","cloak of the manta ray","decanter of endless water","deck of illusions","driftglobe","dust of disappearance","dust of dryness","dust of sneezing and choking","elemental gem","eversmoking bottle","eyes of charming","eyes of minute seeing","eyes of the eagle","gauntlets of ogre power","gem of brightness","gloves of missile snaring","gloves of swimming and climbing","gloves of thievery","goggles of night","hat of disguise","headband of intellect","helm of comprehending languages","helm of telepathy","immovable rod","Keoghtom's ointment","lantern of revealing","medallion of thoughts","necklace of adaptation","oil of slipperiness","pearl of power","periapt of health","periapt of wound closure","philter of love","pipes of haunting","pipes of the sewers","potion of animal friendship","potion of fire breath","potion of growth","potion of greater healing","potion of poison","potion of resistance","potion of water breathing","quiver of Ehlonna","ring of jumping","ring of mind shielding","ring of swimming","ring of warmth","ring of water walking","robe of useful items","rope of climbing","saddle of the cavalier","sending stones","slippers of spider climbing","stone of good luck","wind fan","spell scroll: alter self","spell scroll: blur","spell scroll: cloud of daggers","spell scroll: darkness","spell scroll: hold person","spell scroll: invisibility","spell scroll: levitate","spell scroll: locate object","spell scroll: ray of enfeeblement","spell scroll: scorching ray","spell scroll: suggestion","spell scroll: animate dead","spell scroll: blink","spell scroll: clairvoyance","spell scroll: dispel magic","spell scroll: fireball","spell scroll: fly","spell scroll: gaseous form","spell scroll: haste","spell scroll: lightning bolt","spell scroll: revivify","spell scroll: slow","spell scroll: thunder step","spell scroll: water walk"];
+//b. UNCOMMON
+let checkedMagicItemUncommon = document.querySelectorAll("[name='magicItemUncommonArrayCreator']");
+let magicItemUncommon = [];
+function createMagicItemUncommonArray() {
+  magicItemUncommon = [];
+  let checkedMagicItemUncommonBox = document.querySelectorAll("div[name='magicItemUncommonArrayCreatorDiv'] > [type='checkbox']:checked");
+  checkedMagicItemUncommonBox.forEach(function(item) {
+    magicItemUncommon.push(item.value);
+  });
+}
+createMagicItemUncommonArray();
+checkedMagicItemUncommon.forEach(function(item) {
+  item.addEventListener("change", function() {
+    createMagicItemUncommonArray();
+  });
+});
+//// CLEAR ALL
+function uncheckAllMagicItemUncommon() {
+    document.querySelectorAll("div[name='magicItemUncommonArrayCreatorDiv'] > [type='checkbox']:checked")
+      .forEach(item => item.checked = false);
+      createMagicItemUncommonArray();
+  }
+document.querySelector("[name='magicItemUncommonClearButton']").addEventListener('click', uncheckAllMagicItemUncommon)
+//// CHECK ALL
+function checkAllMagicItemUncommon() {
+    document.querySelectorAll("div[name='magicItemUncommonArrayCreatorDiv'] > [type='checkbox']")
+      .forEach(item => item.checked = true);
+      createMagicItemUncommonArray();
+    }
+document.querySelector("[name='magicItemUncommonCheckButton']").addEventListener('click', checkAllMagicItemUncommon)
 
-const magicItemRare = ["amulet of health","bag of beans","bead of force","belt of dwarvenkind","boots of levitation","boots of speed","bowl of commanding water elementals","bracers of defense","brazier of commanding fire elementals","cape of the mountebank","censer of controlling air elementals","chime of opening","cloak of displacement","cloak of the bat","cube of force","Daern's instant fortress","dimensional shackles","elixir of health","folding boat","gem of seeing","helm of teleportation","Heward's handy haversack","horn of blasting","horseshoes of speed","iron bands of bilarro","mantle of spell resistance","necklace of fireballs","oil of etherealness","periapt of proof against poison","portable hole","potion of clairvoyance","potion of diminution","potion of gaseous form","potion of superior healing","potion of heroism","potion of invulnerability","potion of mind reading","Quaal's feather token","ring of animal influence","ring of evasion","ring of feather falling","ring of free action","ring of protection","ring of resistance","ring of the ram","ring of x-ray vision","robe of eyes","rope of entanglement","scroll of protection","stone of controlling earth elementals","spell scroll: banishment","spell scroll: blight","spell scroll: ice storm","spell scroll: polymorph","spell scroll: stoneskin","spell scroll: dominate person","spell scroll: reincarnate","spell scroll: telekinesis"];
+//c. RARE
+let checkedMagicItemRare = document.querySelectorAll("[name='magicItemRareArrayCreator']");
+let magicItemRare = [];
+function createMagicItemRareArray() {
+  magicItemRare = [];
+  let checkedMagicItemRareBox = document.querySelectorAll("div[name='magicItemRareArrayCreatorDiv'] > [type='checkbox']:checked");
+  checkedMagicItemRareBox.forEach(function(item) {
+    magicItemRare.push(item.value);
+  });
+}
+createMagicItemRareArray();
+checkedMagicItemRare.forEach(function(item) {
+  item.addEventListener("change", function() {
+    createMagicItemRareArray();
+  });
+});
+//// CLEAR ALL
+function uncheckAllMagicItemRare() {
+    document.querySelectorAll("div[name='magicItemRareArrayCreatorDiv'] > [type='checkbox']:checked")
+      .forEach(item => item.checked = false);
+      createMagicItemRareArray();
+  }
+document.querySelector("[name='magicItemRareClearButton']").addEventListener('click', uncheckAllMagicItemRare)
+//// CHECK ALL
+function checkAllMagicItemRare() {
+    document.querySelectorAll("div[name='magicItemRareArrayCreatorDiv'] > [type='checkbox']")
+      .forEach(item => item.checked = true);
+      createMagicItemRareArray();
+    }
+document.querySelector("[name='magicItemRareCheckButton']").addEventListener('click', checkAllMagicItemRare)
+
+console.log(magicItemRare)
 
 //XXII. GAMING SETS
 const gamingSet = ["dice set","dragonchess set","playing card set","three-dragon ante set"];
@@ -2606,11 +2711,11 @@ masterFunction = () => {
     let dModifier = Math.floor(dexModifier);
     document.getElementById("dexterity").innerHTML += `  (${dModifier})`;
     if(dModifier < 0) {
-        document.getElementById("initiative").innerHTML += `<b>Initiative modifier:</b> ${dModifier}`;
+        document.getElementById("initiative").innerHTML += `<b>Initiative mod:</b> ${dModifier}`;
     } else if(dModifier == 0) {
-        document.getElementById("initiative").innerHTML += `<b>Initiative modifier:</b> none`;
+        document.getElementById("initiative").innerHTML += `<b>Initiative mod:</b> none`;
     } else {
-        document.getElementById("initiative").innerHTML += `<b>Initiative modifier:</b> +${dModifier}`;
+        document.getElementById("initiative").innerHTML += `<b>Initiative mod:</b> +${dModifier}`;
     }
     let conModifier = ((playerConstitution - 10) / 2);
     let cModifier = Math.floor(conModifier);
@@ -6461,7 +6566,618 @@ masterFunction = () => {
             let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
             document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
         }
-    };
+    } else if(playerBackgroundSelected == "spy") {
+        //STATIC SKILL ADDITIONS
+        let pulledItem = document.getElementById("skills").textContent;
+        let trimmedItem = pulledItem.substr(21);
+        let splitItem = trimmedItem.split(",");
+        let splitItemArray = splitItem.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem = splitItemArray.filter(Boolean);
+        let tempArray = ["deception","stealth"];
+        let updatedArray = preFilteredItem.concat(tempArray);
+        function removeDuplicates(item) {
+            return item.filter((value, index) => item.indexOf(value) === index);
+        }
+        finalizedArray = removeDuplicates(updatedArray);
+        let joinArray = finalizedArray.join(", ");
+        document.getElementById("skills").innerHTML = `<b>Skill proficiencies:</b> ${joinArray}`;
+        //STATIC TOOL PROFICIENCY ADDITIONS
+        let pulledItem2 = document.getElementById("tools").textContent;
+        let trimmedItem2 = pulledItem2.substr(20);
+        let splitItem2 = trimmedItem2.split(",");
+        let splitItemArray2 = splitItem2.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem2 = splitItemArray2.filter(Boolean);
+        let tempArray2 = ["thieves' tools"];
+        let updatedArray2 = preFilteredItem2.concat(tempArray2);
+        function removeDuplicates(item) {
+            return item.filter((value, index) => item.indexOf(value) === index);
+        }
+        finalizedArray2 = removeDuplicates(updatedArray2);
+        let joinArray2 = finalizedArray2.join(", ");
+        let selectedSet = gamingSet[Math.floor(Math.random() * gamingSet.length)];
+        document.getElementById("tools").innerHTML = `<b>Tool proficiencies:</b> ${joinArray2}, ${selectedSet}`;
+        //EQUIPMENT ADDITIONS
+        document.getElementById("equipment").innerHTML += `, a crowbar, a set of dark common clothes including a hood, and a pouch containing 15 gp`;
+        //BACKGROUND SPECIFIC ADDITIONS
+        let criminalSpecialty = ["blackmailer","burglar","enforcer","fence","highway robber","hired killer","pickpocket"];
+        let chosenSpecialty = criminalSpecialty[Math.floor(Math.random() * criminalSpecialty.length)];
+        document.getElementById("backgroundSub").innerHTML += `<b>Specialty:</b> ${chosenSpecialty}`;
+        document.getElementById("backgroundSub").innerHTML += `<br>
+        <br>
+        <i>Criminal contact.</i> You have a reliable and trustworthy contact who acts as your liaison to a network of other criminals. You know how to get messages to and from your contact, even over great distances; specifically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you.`;
+        //BACKGROUND BONDS
+        let backgroundBonds = ["I'm trying to pay off an old debt I owe to a generous benefactor.","My ill-gotten gains go to support my family.","Something important was taken from me, and I aim to steal it back.","I will become the greatest thief that ever lived.","I'm guilty of a terrible crime. I hope I can redeem myself for it.","Someone I loved died because of a mistake I made. That will never happen again."];
+        let chosenBond = backgroundBonds[Math.floor(Math.random() * backgroundBonds.length)];
+        document.getElementById("bond").innerHTML = `<b>Bond:</b> ${chosenBond}`;
+        //BACKGROUND FLAWS
+        let backgroundFlaws = ["When I see something valuable, I can't think about anything but how to steal it.","When faced with a choice between money and my friends, I usually choose the money.","If there's a plan, I'll forget it. If I don't forget it, I'll ignore it.","I have a 'tell' that reveals when I'm lying.","I turn tail and run when things look bad.","An innocent person is in prison for a crime that I committed. I'm okay with that."];
+        let chosenFlaw = backgroundFlaws[Math.floor(Math.random() * backgroundFlaws.length)];
+        document.getElementById("flaw").innerHTML = `<b>Flaw:</b> ${chosenFlaw}`;
+        //BACKGROUND TRAITS
+        let backgroundTraits = ["I always have a plan for what to do when things go wrong.","I am always calm, no matter what the situation. I never raise my voice or let my emotions control me.","The first thing I do in a new place is note the locations of everything valuable — or where such things could be hidden.","I would rather make a new friend than a new enemy.","I am incredibly slow to trust. Those who seem the fairest often have the most to hide.","I don't pay attention to the risks in a situation. Never tell me the odds.","The best way to get me to do something is to tell me I can't do it.","I blow up at the slightest insult."];
+        let chosenTrait = backgroundTraits[Math.floor(Math.random() * backgroundTraits.length)];
+        document.getElementById("trait").innerHTML = `<b>Personality trait:</b> ${chosenTrait}`;
+        //BACKGROUND IDEALS
+        if(playerAlignmentSelected == "lawful good") {
+            let idealsArray = ["Honor. I don't steal from others in the trade.","Charity. I steal from the wealthy so that I can help people in need.","Redemption. There's a spark of good in everyone."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "lawful neutral") {
+            let idealsArray = ["Honor. I don't steal from others in the trade.","People. I'm loyal to my friends, not to any ideals, and everyone else can take a trip down the Styx for all I care."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "lawful evil") {
+            let idealsArray = ["Honor. I don't steal from others in the trade.","Greed. I will do whatever it takes to become wealthy."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic good") {
+            let idealsArray = ["Freedom. Chains are meant to be broken, as are those who would forge them.","Charity. I steal from the wealthy so that I can help people in need.","Redemption. There's a spark of good in everyone."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic neutral") {
+            let idealsArray = ["Freedom. Chains are meant to be broken, as are those who would forge them.","People. I'm loyal to my friends, not to any ideals, and everyone else can take a trip down the Styx for all I care."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic evil") {
+            let idealsArray = ["Freedom. Chains are meant to be broken, as are those who would forge them.","Greed. I will do whatever it takes to become wealthy."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "neutral good") {
+            let idealsArray = ["Charity. I steal from the wealthy so that I can help people in need.","People. I'm loyal to my friends, not to any ideals, and everyone else can take a trip down the Styx for all I care.","Redemption. There's a spark of good in everyone."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "true neutral") {
+            let idealsArray = ["People. I'm loyal to my friends, not to any ideals, and everyone else can take a trip down the Styx for all I care."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "neutral evil") {
+            let idealsArray = ["Greed. I will do whatever it takes to become wealthy.","People. I'm loyal to my friends, not to any ideals, and everyone else can take a trip down the Styx for all I care."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        }
+    } else if(playerBackgroundSelected == "gladiator") {
+        //STATIC SKILL ADDITIONS
+        let pulledItem = document.getElementById("skills").textContent;
+        let trimmedItem = pulledItem.substr(21);
+        let splitItem = trimmedItem.split(",");
+        let splitItemArray = splitItem.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem = splitItemArray.filter(Boolean);
+        let tempArray = ["acrobatics","performance"];
+        let updatedArray = preFilteredItem.concat(tempArray);
+        function removeDuplicates(item) {
+            return item.filter((value, index) => item.indexOf(value) === index);
+        }
+        finalizedArray = removeDuplicates(updatedArray);
+        let joinArray = finalizedArray.join(", ");
+        document.getElementById("skills").innerHTML = `<b>Skill proficiencies:</b> ${joinArray}`;
+        //STATIC TOOL PROFICIENCY ADDITIONS
+        let selectedInstrument = musicalInstrument[Math.floor(Math.random() * musicalInstrument.length)];
+        document.getElementById("tools").innerHTML += `, ${selectedInstrument}`
+        let pulledItem2 = document.getElementById("tools").textContent;
+        let trimmedItem2 = pulledItem2.substr(20);
+        let splitItem2 = trimmedItem2.split(",");
+        let splitItemArray2 = splitItem2.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem2 = splitItemArray2.filter(Boolean);
+        let tempArray2 = ["disguise kit"];
+        let updatedArray2 = preFilteredItem2.concat(tempArray2);
+        function removeDuplicates(item) {
+            return item.filter((value, index) => item.indexOf(value) === index);
+        }
+        finalizedArray2 = removeDuplicates(updatedArray2);
+        let joinArray2 = finalizedArray2.join(", ");
+        document.getElementById("tools").innerHTML = `<b>Tool proficiencies:</b> ${joinArray2}`;
+        //EQUIPMENT ADDITIONS
+        let pulledItem4 = document.getElementById("equipment").textContent;
+        let trimmedItem4 = pulledItem4.substr(11);
+        let splitItem4 = trimmedItem4.split(",");
+        let splitItemArray4 = splitItem4.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem4 = splitItemArray4.filter(Boolean);
+        flipResultGladiator = (Math.floor(Math.random()*2)==0);
+        if(flipResultGladiator) {
+            let filteredItem4 = musicalInstrument.filter(item => !preFilteredItem4.includes(item));
+            let chosenInstrument = filteredItem4[Math.floor(Math.random() * filteredItem4.length)];
+            let tempFavor = ["love letter from an admirer","lock of hair from an admirer","trinket from an admirer"];
+            let chosenFavor = tempFavor[Math.floor(Math.random() * tempFavor.length)];
+            document.getElementById("equipment").innerHTML += `, ${chosenInstrument}, ${chosenFavor}, costume clothes, and a pouch containing 15 gp`;
+        }else {
+            let unusualWeapons = ["trident","net","sickle","pike","war pick","whip","sling","dart"];
+            let filteredItem4 = unusualWeapons.filter(item => !preFilteredItem4.includes(item));
+            let chosenInstrument = filteredItem4[Math.floor(Math.random() * filteredItem4.length)];
+            let tempFavor = ["love letter from an admirer","lock of hair from an admirer","trinket from an admirer"];
+            let chosenFavor = tempFavor[Math.floor(Math.random() * tempFavor.length)];
+            document.getElementById("equipment").innerHTML += `, ${chosenInstrument}, ${chosenFavor}, costume clothes, and a pouch containing 15 gp`;
+        };
+        //BACKGROUND SPECIFIC ADDITIONS
+        const entertainerNumber = [1,2,3];
+        let chosenEntertainerNumber = entertainerNumber[Math.floor(Math.random() * entertainerNumber.length)];
+        if(chosenEntertainerNumber == 1) {
+            document.getElementById("backgroundSub").innerHTML += `<b>Routine:</b> gladiator combat`;
+        } else if(chosenEntertainerNumber == 2) {
+            document.getElementById("backgroundSub").innerHTML += `<b>Routines:</b> gladiator combat, tumbler`;
+        } else if(chosenEntertainerNumber == 3) {
+            document.getElementById("backgroundSub").innerHTML += `<b>Routines:</b> gladiator combat, actor`;
+        }
+        document.getElementById("backgroundSub").innerHTML += `<br>
+        <br>
+        <i>By popular demand.</i> You can always find a place to perform, in any place that features combat for entertainment — perhaps a gladiatorial arena or secret pit fighting club. At such a place, you receive free lodging and food of a modest or comfortable standard (depending on the quality of the establishment), as long as you perform each night. In addition, your performance makes you something of a local figure. When strangers recognize you in a town where you have performed, they typically take a liking to you.`;
+        //BACKGROUND BONDS
+        let backgroundBonds = ["My instrument is my most treasured possession, and it reminds me of someone I love.","Someone stole my precious instrument, and someday I'll get it back.","I want to be famous, whatever it takes.","I idolize a hero of the old tales and measure my deeds against that person's.","I will do anything to prove myself superior to my hated rival.","I would do anything for the other members of my old troupe."];
+        let chosenBond = backgroundBonds[Math.floor(Math.random() * backgroundBonds.length)];
+        document.getElementById("bond").innerHTML = `<b>Bond:</b> ${chosenBond}`;
+        //BACKGROUND FLAWS
+        let backgroundFlaws = ["I'll do anything to win fame and renown.","I'm a sucker for a pretty face.","A scandal prevents me from ever going home again. That kind of trouble seems to follow me around.","I once satirized a noble who still wants my head. It was a mistake that I will likely repeat.","I have trouble keeping my true feelings hidden. My sharp tongue lands me in trouble.","Despite my best efforts, I am unreliable to my friends."];
+        let chosenFlaw = backgroundFlaws[Math.floor(Math.random() * backgroundFlaws.length)];
+        document.getElementById("flaw").innerHTML = `<b>Flaw:</b> ${chosenFlaw}`;
+        //BACKGROUND TRAITS
+        let backgroundTraits = ["I know a story relevant to almost every situation.","Whenever I come to a new place, I collect local rumors and spread gossip.","I'm a hopeless romantic, always searching for that 'special someone.'","Nobody stays angry at me or around me for long, since I can defuse any amount of tension.","I love a good insult, even one directed at me.","I get bitter if I'm not the center of attention.","I'll settle for nothing less than perfection.","I change my mood or my mind as quickly as I change key in a song."];
+        let chosenTrait = backgroundTraits[Math.floor(Math.random() * backgroundTraits.length)];
+        document.getElementById("trait").innerHTML = `<b>Personality trait:</b> ${chosenTrait}`;
+        //BACKGROUND IDEALS
+        if(playerAlignmentSelected == "lawful good") {
+            let idealsArray = ["Beauty. When I perform, I make the world better than it was.","Tradition. The stories, legends, and songs of the past must never be forgotten, for they teach us who we are","Honesty. Art should reflect the soul; it should come from within and reveal who we really are."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "lawful neutral") {
+            let idealsArray = ["Tradition. The stories, legends, and songs of the past must never be forgotten, for they teach us who we are","People. I like seeing the smiles on people's faces when I perform. That's all that matters.","Honesty. Art should reflect the soul; it should come from within and reveal who we really are."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "lawful evil") {
+            let idealsArray = ["Tradition. The stories, legends, and songs of the past must never be forgotten, for they teach us who we are","Greed. I'm only in it for the money and fame.","Honesty. Art should reflect the soul; it should come from within and reveal who we really are."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic good") {
+            let idealsArray = ["Beauty. When I perform, I make the world better than it was.","Creativity. The world is in need of new ideas and bold action","Honesty. Art should reflect the soul; it should come from within and reveal who we really are."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic neutral") {
+            let idealsArray = ["Creativity. The world is in need of new ideas and bold action","People. I like seeing the smiles on people's faces when I perform. That's all that matters.","Honesty. Art should reflect the soul; it should come from within and reveal who we really are."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic evil") {
+            let idealsArray = ["Creativity. The world is in need of new ideas and bold action","Greed. I'm only in it for the money and fame.","Honesty. Art should reflect the soul; it should come from within and reveal who we really are."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "neutral good") {
+            let idealsArray = ["Beauty. When I perform, I make the world better than it was.","People. I like seeing the smiles on people's faces when I perform. That's all that matters.","Honesty. Art should reflect the soul; it should come from within and reveal who we really are."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "true neutral") {
+            let idealsArray = ["People. I like seeing the smiles on people's faces when I perform. That's all that matters.","Honesty. Art should reflect the soul; it should come from within and reveal who we really are."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "neutral evil") {
+            let idealsArray = ["Greed. I'm only in it for the money and fame.","People. I like seeing the smiles on people's faces when I perform. That's all that matters.","Honesty. Art should reflect the soul; it should come from within and reveal who we really are."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        }
+    } else if(playerBackgroundSelected == "guild merchant") {
+        //STATIC SKILL ADDITIONS
+        let pulledItem = document.getElementById("skills").textContent;
+        let trimmedItem = pulledItem.substr(21);
+        let splitItem = trimmedItem.split(",");
+        let splitItemArray = splitItem.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem = splitItemArray.filter(Boolean);
+        let tempArray = ["insight","persuasion"];
+        let updatedArray = preFilteredItem.concat(tempArray);
+        function removeDuplicates(item) {
+            return item.filter((value, index) => item.indexOf(value) === index);
+        }
+        finalizedArray = removeDuplicates(updatedArray);
+        let joinArray = finalizedArray.join(", ");
+        document.getElementById("skills").innerHTML = `<b>Skill proficiencies:</b> ${joinArray}`;
+        //STATIC TOOL PROFICIENCY ADDITIONS
+        const merchantNumber = [1,2,3];
+        let chosenMerchantNumber = merchantNumber[Math.floor(Math.random() * merchantNumber.length)];
+        if(chosenMerchantNumber == 1) {
+            let selectedTool = artisanTools[Math.floor(Math.random() * artisanTools.length)];
+            document.getElementById("tools").innerHTML += `, ${selectedTool}`;
+            let pulledItem2 = document.getElementById("tools").textContent;
+            let trimmedItem2 = pulledItem2.substr(20);
+            let splitItem2 = trimmedItem2.split(",");
+            let splitItemArray2 = splitItem2.map(itemFunction);
+            function itemFunction(item) {
+                return item.trim();
+            }
+            let preFilteredItem2 = splitItemArray2.filter(Boolean);
+            function removeDuplicates(item) {
+                return item.filter((value, index) => item.indexOf(value) === index);
+            }
+            finalizedArray2 = removeDuplicates(preFilteredItem2);
+            let joinArray2 = finalizedArray2.join(", ");
+            document.getElementById("tools").innerHTML = `<b>Tool proficiencies:</b> ${joinArray2}`;
+            if(selectedTool == "alchemist's supplies") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> alchemists and apothecaries`;
+            } else if(selectedTool == "brewer's supplies") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> brewers, distillers, and vinters`;
+            } else if(selectedTool == "calligrapher's supplies") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> calligraphers, scribes, and scriveners`;
+            } else if(selectedTool == "carpenter's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> carpenters, roofers, and plasterers`;
+            } else if(selectedTool == "cartographer's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> cartographers, surveyors, and chart-makers`;
+            } else if(selectedTool == "cobbler's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> cobblers and shoemakers`;
+            } else if(selectedTool == "cook's utensils") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> cooks and bakers`;
+            } else if(selectedTool == "glassblower's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> glassblowers and glaziers`;
+            } else if(selectedTool == "jeweler's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> jewelers and gemcutters`;
+            } else if(selectedTool == "leatherworker's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> leatherworkers, skinners, and tanners`;
+            } else if(selectedTool == "mason's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> masons and stonecutters`;
+            } else if(selectedTool == "painter's supplies") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> painters, limners, and sign-makers`;
+            } else if(selectedTool == "potter's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> potters and tile-makers`;
+            } else if(selectedTool == "smith's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> smiths and metal-forgers`;
+            } else if(selectedTool == "tinker's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> tinkers, pewterers, and casters`;
+            } else if(selectedTool == "weaver's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> weavers and dyers`;
+            } else if(selectedTool == "woodcarver's tools") {
+                document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> woodcarvers, coopers, and bowyers`;
+            }
+                //businesses not represented: armorers, locksmiths, and finesmiths
+                //shipwrights and sail-makers
+                //wagon-makers and wheelwrights
+                //no definite corresponding artisan's tool 
+        } else if(chosenMerchantNumber == 2) {
+            document.getElementById("tools").innerHTML += `, navigator's tools`;
+            let pulledItem2 = document.getElementById("tools").textContent;
+            let trimmedItem2 = pulledItem2.substr(20);
+            let splitItem2 = trimmedItem2.split(",");
+            let splitItemArray2 = splitItem2.map(itemFunction);
+            function itemFunction(item) {
+                return item.trim();
+            }
+            let preFilteredItem2 = splitItemArray2.filter(Boolean);
+            function removeDuplicates(item) {
+                return item.filter((value, index) => item.indexOf(value) === index);
+            }
+            finalizedArray2 = removeDuplicates(preFilteredItem2);
+            let joinArray2 = finalizedArray2.join(", ");
+            document.getElementById("tools").innerHTML = `<b>Tool proficiencies:</b> ${joinArray2}`;
+            let tempBusiness = ["alchemists and apothecaries","armorers, locksmiths, and finesmiths","brewers, distillers, and vinters","calligraphers, scribes, and scriveners","carpenters, roofers, and plasterers","cartographers, surveyors, and chart-makers","cobblers and shoemakers","cooks and bakers","glassblowers and glaziers","jewelers and gemcutters","leatherworkers, skinners, and tanners","masons and stonecutters","painters, limners, and sign-makers","potters and tile-makers","shipwrights and sail-makers","smiths and metal-forgers","tinkers, pewterers, and casters","wagon-makers and wheelwrights","weavers and dyers","woodcarvers, coopers, and bowyers"];
+            let selectedMerchant = tempBusiness[Math.floor(Math.random() * tempBusiness.length)];
+            document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> ${selectedMerchant}`;
+        } else if(chosenMerchantNumber == 3) {
+            let languageAdditionsArray2 = document.getElementById("languages").textContent;
+            let newLanguageAdditionsArray2 = languageAdditionsArray2.substr(11);
+            let splitLanguageAdditionsArray2 = newLanguageAdditionsArray2.split(",");
+            let newSplitLanguageAdditionsArray2 = splitLanguageAdditionsArray2.map(languageFunction2);
+            function languageFunction2(language) {
+                return language.trim();
+            }
+            let preFilteredLanguageAdditions2 = newSplitLanguageAdditionsArray2.filter(Boolean);
+            let filteredLanguages2 = allLanguages.filter(item => !preFilteredLanguageAdditions2.includes(item));
+            let backgroundLanguage2 = filteredLanguages2[Math.floor(Math.random() * filteredLanguages2.length)];
+            document.getElementById("languages").innerHTML += `, ${backgroundLanguage2}`;
+            let tempBusiness = ["alchemists and apothecaries","armorers, locksmiths, and finesmiths","brewers, distillers, and vinters","calligraphers, scribes, and scriveners","carpenters, roofers, and plasterers","cartographers, surveyors, and chart-makers","cobblers and shoemakers","cooks and bakers","glassblowers and glaziers","jewelers and gemcutters","leatherworkers, skinners, and tanners","masons and stonecutters","painters, limners, and sign-makers","potters and tile-makers","shipwrights and sail-makers","smiths and metal-forgers","tinkers, pewterers, and casters","wagon-makers and wheelwrights","weavers and dyers","woodcarvers, coopers, and bowyers"];
+            let selectedMerchant = tempBusiness[Math.floor(Math.random() * tempBusiness.length)];
+            document.getElementById("backgroundSub").innerHTML += `<b>Guild business:</b> ${selectedMerchant}`;
+        }
+        //EQUIPMENT ADDITIONS
+        let pulledItem4 = document.getElementById("equipment").textContent;
+        let trimmedItem4 = pulledItem4.substr(11);
+        let splitItem4 = trimmedItem4.split(",");
+        let splitItemArray4 = splitItem4.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem4 = splitItemArray4.filter(Boolean);
+        flipResultMerchant = (Math.floor(Math.random()*2)==0);
+        if(flipResultMerchant) {
+            let filteredItem4 = artisanTools.filter(item => !preFilteredItem4.includes(item));
+            let chosenTool = filteredItem4[Math.floor(Math.random() * filteredItem4.length)];
+            document.getElementById("equipment").innerHTML += `, ${chosenTool}, a letter of introduction from your guild, a set of traveler's clothes, and a pouch containing 15 gp`;
+        } else {
+            document.getElementById("equipment").innerHTML += `, a mule and a cart, a letter of introduction from your guild, a set of traveler's clothes, and a pouch containing 15 gp`;
+        };
+        let filteredItem4 = artisanTools.filter(item => !preFilteredItem4.includes(item));
+        let chosenTool = filteredItem4[Math.floor(Math.random() * filteredItem4.length)];
+        document.getElementById("equipment").innerHTML += `, ${chosenTool}, a letter of introduction from your guild, a set of traveler's clothes, and a pouch containing 15 gp`;
+        //LANGUAGE ADDITIONS
+        let languageAdditionsArray = document.getElementById("languages").textContent;
+        let newLanguageAdditionsArray = languageAdditionsArray.substr(11);
+        let splitLanguageAdditionsArray = newLanguageAdditionsArray.split(",");
+        let newSplitLanguageAdditionsArray = splitLanguageAdditionsArray.map(languageFunction);
+        function languageFunction(language) {
+            return language.trim();
+        }
+        let preFilteredLanguageAdditions = newSplitLanguageAdditionsArray.filter(Boolean);
+        let filteredLanguages = allLanguages.filter(item => !preFilteredLanguageAdditions.includes(item));
+        let backgroundLanguage = filteredLanguages[Math.floor(Math.random() * filteredLanguages.length)];
+        document.getElementById("languages").innerHTML += `, ${backgroundLanguage}`;
+        //BACKGROUND SPECIFIC ADDITIONS
+        document.getElementById("backgroundSub").innerHTML += `<br>
+            <br>
+            <i>Guild membership.</i> As an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary, and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession, which can be a good place to meet potential patrons, allies, or hirelings.
+            <br>
+            <br>
+            Guilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild's coffers.
+            <br>
+            <br>
+            You must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild's good graces.`;
+        //BACKGROUND BONDS
+        let backgroundBonds = ["The workshop where I learned my trade is the most important place in the world to me.","I created a great work for someone, and then found them unworthy to receive it. I'm still looking for someone worthy.","I owe my guild a great debt for forging me into the person I am today.","I pursue wealth to secure someone's love.","One day I will return to my guild and prove that I am the greatest artisan of them all.","I will get revenge on the evil forces that destroyed my place of business and ruined my livelihood."];
+        let chosenBond = backgroundBonds[Math.floor(Math.random() * backgroundBonds.length)];
+        document.getElementById("bond").innerHTML = `<b>Bond:</b> ${chosenBond}`;
+        //BACKGROUND FLAWS
+        let backgroundFlaws = ["I'll do anything to get my hands on something rare or priceless.","I'm quick to assume that someone is trying to cheat me.","No one must ever learn that I once stole money from guild coffers.","I'm never satisfied with what I have — I always want more.","I would kill to acquire a noble title.","I'm horribly jealous of anyone who can outshine my handiwork. Everywhere I go, I'm surrounded by rivals."];
+        let chosenFlaw = backgroundFlaws[Math.floor(Math.random() * backgroundFlaws.length)];
+        document.getElementById("flaw").innerHTML = `<b>Flaw:</b> ${chosenFlaw}`;
+        //BACKGROUND TRAITS
+        let backgroundTraits = ["I believe that anything worth doing is worth doing right. I can't help it — I'm a perfectionist.","I'm a snob who looks down on those who can't appreciate fine art.","I always want to know how things work and what makes people tick.","I'm full of witty aphorisms and have a proverb for every occasion.","I'm rude to people who lack my commitment to hard work and fair play.","I like to talk at length about my profession.","I don't part with my money easily and will haggle tirelessly to get the best deal possible.","I'm well known for my work, and I want to make sure everyone appreciates it. I'm always taken aback when people haven't heard of me."];
+        let chosenTrait = backgroundTraits[Math.floor(Math.random() * backgroundTraits.length)];
+        document.getElementById("trait").innerHTML = `<b>Personality trait:</b> ${chosenTrait}`;
+        //BACKGROUND IDEALS
+        if(playerAlignmentSelected == "lawful good") {
+            let idealsArray = ["Aspiration. I work hard to be the best there is at my craft.","Community. It is the duty of all civilized people to strengthen the bonds of community and the security of civilization.","Generosity. My talents were given to me so that I could use them to benefit the world."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "lawful neutral") {
+            let idealsArray = ["Aspiration. I work hard to be the best there is at my craft.","Community. It is the duty of all civilized people to strengthen the bonds of community and the security of civilization.","People. I'm committed to the people I care about, not to ideals."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "lawful evil") {
+            let idealsArray = ["Aspiration. I work hard to be the best there is at my craft.","Community. It is the duty of all civilized people to strengthen the bonds of community and the security of civilization.","Greed. I'm only in it for the money."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic good") {
+            let idealsArray = ["Aspiration. I work hard to be the best there is at my craft.","Generosity. My talents were given to me so that I could use them to benefit the world.","Freedom. Everyone should be free to pursue their own livelihood."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic neutral") {
+            let idealsArray = ["Aspiration. I work hard to be the best there is at my craft.","Freedom. Everyone should be free to pursue their own livelihood.","People. I'm committed to the people I care about, not to ideals."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic evil") {
+            let idealsArray = ["Aspiration. I work hard to be the best there is at my craft.","Freedom. Everyone should be free to pursue their own livelihood.","Greed. I'm only in it for the money."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "neutral good") {
+            let idealsArray = ["Aspiration. I work hard to be the best there is at my craft.","Generosity. My talents were given to me so that I could use them to benefit the world.","People. I'm committed to the people I care about, not to ideals."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "true neutral") {
+            let idealsArray = ["Aspiration. I work hard to be the best there is at my craft.","People. I'm committed to the people I care about, not to ideals."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "neutral evil") {
+            let idealsArray = ["Aspiration. I work hard to be the best there is at my craft.","Greed. I'm only in it for the money.","People. I'm committed to the people I care about, not to ideals."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        }
+    } else if(playerBackgroundSelected == "knight") {
+        //STATIC SKILL ADDITIONS
+        let pulledItem = document.getElementById("skills").textContent;
+        let trimmedItem = pulledItem.substr(21);
+        let splitItem = trimmedItem.split(",");
+        let splitItemArray = splitItem.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem = splitItemArray.filter(Boolean);
+        let tempArray = ["history","persuasion"];
+        let updatedArray = preFilteredItem.concat(tempArray);
+        function removeDuplicates(item) {
+            return item.filter((value, index) => item.indexOf(value) === index);
+        }
+        finalizedArray = removeDuplicates(updatedArray);
+        let joinArray = finalizedArray.join(", ");
+        document.getElementById("skills").innerHTML = `<b>Skill proficiencies:</b> ${joinArray}`;
+        //STATIC TOOL PROFICIENCY ADDITIONS
+        let selectedTool = gamingSet[Math.floor(Math.random() * gamingSet.length)];
+        document.getElementById("tools").innerHTML += `, ${selectedTool}`;
+        let pulledItem2 = document.getElementById("tools").textContent;
+        let trimmedItem2 = pulledItem2.substr(20);
+        let splitItem2 = trimmedItem2.split(",");
+        let splitItemArray2 = splitItem2.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem2 = splitItemArray2.filter(Boolean);
+        function removeDuplicates(item) {
+            return item.filter((value, index) => item.indexOf(value) === index);
+        }
+        finalizedArray2 = removeDuplicates(preFilteredItem2);
+        let joinArray2 = finalizedArray2.join(", ");
+        document.getElementById("tools").innerHTML = `<b>Tool proficiencies:</b> ${joinArray2}`;
+        //EQUIPMENT ADDITIONS
+        document.getElementById("equipment").innerHTML += `, a banner or other token from a noble lord or lady to whom you have given your heart, a set of fine clothes, a signet ring, a scroll of pedigree, and a purse containing 25 gp`;
+        //LANGUAGE ADDITIONS
+        let languageAdditionsArray = document.getElementById("languages").textContent;
+        let newLanguageAdditionsArray = languageAdditionsArray.substr(11);
+        let splitLanguageAdditionsArray = newLanguageAdditionsArray.split(",");
+        let newSplitLanguageAdditionsArray = splitLanguageAdditionsArray.map(languageFunction);
+        function languageFunction(language) {
+            return language.trim();
+        }
+        let preFilteredLanguageAdditions = newSplitLanguageAdditionsArray.filter(Boolean);
+        let filteredLanguages = allLanguages.filter(item => !preFilteredLanguageAdditions.includes(item));
+        let backgroundLanguage = filteredLanguages[Math.floor(Math.random() * filteredLanguages.length)];
+        document.getElementById("languages").innerHTML += `, ${backgroundLanguage}`;
+        //BACKGROUND SPECIFIC ADDITIONS
+        document.getElementById("backgroundSub").innerHTML += `<i>Retainers.</i> You have the service of three retainers loyal to your family. One of your commoner retainers is replaced by a noble who serves as your squire, aiding you in exchange for training on his or her own path to knighthood. Your two remaining retainers might include a groom to care for your horse and a servant who polishes your armor (and even helps you put it on). Your retainers can perform mundane tasks for you, but they do not fight for you, will not follow you into obviously dangerous areas (such as dungeons), and will leave if they are frequently endangered or abused.`;
+        //BACKGROUND BONDS
+        let backgroundBonds = ["I will face any challenge to win the approval of my family.","My house's alliance with another noble family must be sustained at all costs.","Nothing is more important than the other members of my family.","I am in love with the heir of a family that my family despises.","My loyalty to my sovereign is unwavering.","The common folk must see me as a hero of the people."];
+        let chosenBond = backgroundBonds[Math.floor(Math.random() * backgroundBonds.length)];
+        document.getElementById("bond").innerHTML = `<b>Bond:</b> ${chosenBond}`;
+        //BACKGROUND FLAWS
+        let backgroundFlaws = ["I secretly believe that everyone is beneath me.","I hide a truly scandalous secret that could ruin my family forever.","I too often hear veiled insults and threats in every word addressed to me, and I'm quick to anger.","I have an insatiable desire for carnal pleasures.","In fact, the world does revolve around me.","By my words and actions, I often bring shame to my family."];
+        let chosenFlaw = backgroundFlaws[Math.floor(Math.random() * backgroundFlaws.length)];
+        document.getElementById("flaw").innerHTML = `<b>Flaw:</b> ${chosenFlaw}`;
+        //BACKGROUND TRAITS
+        let backgroundTraits = ["My eloquent flattery makes everyone I talk to feel like the most wonderful and important person in the world.","The common folk love me for my kindness and generosity.","No one could doubt by looking at my regal bearing that I am a cut above the unwashed masses.","I take great pains to always look my best and follow the latest fashions.","I don't like to get my hands dirty, and I won't be caught dead in unsuitable accommodations.","Despite my noble birth, I do not place myself above other folk. We all have the same blood.","My favor, once lost, is lost forever.","If you do me an injury, I will crush you, ruin your name, and salt your fields."];
+        let chosenTrait = backgroundTraits[Math.floor(Math.random() * backgroundTraits.length)];
+        document.getElementById("trait").innerHTML = `<b>Personality trait:</b> ${chosenTrait}`;
+        //BACKGROUND IDEALS
+        if(playerAlignmentSelected == "lawful good") {
+            let idealsArray = ["Family. Blood runs thicker than water.","Respect. Respect is due to me because of my position, but all people regardless of station deserve to be treated with dignity.","Noble Obligation. It is my duty to protect and care for the people beneath me.","Responsibility. It is my duty to respect the authority of those above me, just as those below me must respect mine."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "lawful neutral") {
+            let idealsArray = ["Family. Blood runs thicker than water.","Responsibility. It is my duty to respect the authority of those above me, just as those below me must respect mine."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "lawful evil") {
+            let idealsArray = ["Family. Blood runs thicker than water.","Responsibility. It is my duty to respect the authority of those above me, just as those below me must respect mine.","Power. If I can attain more power, no one will tell me what to do."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic good") {
+            let idealsArray = ["Family. Blood runs thicker than water.","Respect. Respect is due to me because of my position, but all people regardless of station deserve to be treated with dignity.","Noble Obligation. It is my duty to protect and care for the people beneath me.","Independence. I must prove that I can handle myself without the coddling of my family."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic neutral") {
+            let idealsArray = ["Family. Blood runs thicker than water.","Independence. I must prove that I can handle myself without the coddling of my family."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic evil") {
+            let idealsArray = ["Family. Blood runs thicker than water.","Independence. I must prove that I can handle myself without the coddling of my family.","Power. If I can attain more power, no one will tell me what to do."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "neutral good") {
+            let idealsArray = ["Family. Blood runs thicker than water.","Respect. Respect is due to me because of my position, but all people regardless of station deserve to be treated with dignity.","Noble Obligation. It is my duty to protect and care for the people beneath me."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "neutral evil") {
+            let idealsArray = ["Family. Blood runs thicker than water.","Power. If I can attain more power, no one will tell me what to do."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        }
+    } else if(playerBackgroundSelected == "pirate") {
+        //STATIC SKILL ADDITIONS
+        let pulledItem = document.getElementById("skills").textContent;
+        let trimmedItem = pulledItem.substr(21);
+        let splitItem = trimmedItem.split(",");
+        let splitItemArray = splitItem.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem = splitItemArray.filter(Boolean);
+        let tempArray = ["athletics","perception"];
+        let updatedArray = preFilteredItem.concat(tempArray);
+        function removeDuplicates(item) {
+            return item.filter((value, index) => item.indexOf(value) === index);
+        }
+        finalizedArray = removeDuplicates(updatedArray);
+        let joinArray = finalizedArray.join(", ");
+        document.getElementById("skills").innerHTML = `<b>Skill proficiencies:</b> ${joinArray}`;
+        //STATIC TOOL PROFICIENCY ADDITIONS
+        let selectedTool = waterVehicle[Math.floor(Math.random() * waterVehicle.length)];
+        document.getElementById("tools").innerHTML += `, ${selectedTool}`;
+        let pulledItem2 = document.getElementById("tools").textContent;
+        let trimmedItem2 = pulledItem2.substr(20);
+        let splitItem2 = trimmedItem2.split(",");
+        let splitItemArray2 = splitItem2.map(itemFunction);
+        function itemFunction(item) {
+            return item.trim();
+        }
+        let preFilteredItem2 = splitItemArray2.filter(Boolean);
+        let tempArray2 = ["navigator's tools"];
+        let updatedArray2 = preFilteredItem2.concat(tempArray2);
+        function removeDuplicates(item) {
+            return item.filter((value, index) => item.indexOf(value) === index);
+        }
+        finalizedArray2 = removeDuplicates(updatedArray2);
+        let joinArray2 = finalizedArray2.join(", ");
+        document.getElementById("tools").innerHTML = `<b>Tool proficiencies:</b> ${joinArray2}`;
+        //EQUIPMENT ADDITIONS
+        document.getElementById("equipment").innerHTML += `, a belaying pin (club), 50 feet of silk rope, a lucky charm such as a rabbit foot or a small stone with a hole in the center, a set of common clothes, and a pouch containing 10 gp`;
+        //BACKGROUND SPECIFIC ADDITIONS
+        document.getElementById("backgroundSub").innerHTML += `<i>Bad reputation.</i> No matter where you go, people are afraid of you due to your reputation. When you are in a civilized settlement, you can get away with minor criminal offenses, such as refusing to pay for food at a tavern or breaking down doors at a local shop, since most people will not report your activity to the authorities.`;
+        //BACKGROUND BONDS
+        let backgroundBonds = ["I'm loyal to my captain first, everything else second.","The ship is most important — crewmates and captains come and go.","I'll always remember my first ship.","In a harbor town, I have a paramour whose eyes nearly stole me from the sea.","I was cheated out of my fair share of the profits, and I want to get my due.","Ruthless pirates murdered my captain and crewmates, plundered our ship, and left me to die. Vengeance will be mine."];
+        let chosenBond = backgroundBonds[Math.floor(Math.random() * backgroundBonds.length)];
+        document.getElementById("bond").innerHTML = `<b>Bond:</b> ${chosenBond}`;
+        //BACKGROUND FLAWS
+        let backgroundFlaws = ["I follow orders, even if I think they're wrong.","I'll say anything to avoid having to do extra work.","Once someone questions my courage, I never back down no matter how dangerous the situation.","Once I start drinking, it's hard for me to stop.","I can't help but pocket loose coins and other trinkets I come across.","My pride will probably lead to my destruction."];
+        let chosenFlaw = backgroundFlaws[Math.floor(Math.random() * backgroundFlaws.length)];
+        document.getElementById("flaw").innerHTML = `<b>Flaw:</b> ${chosenFlaw}`;
+        //BACKGROUND TRAITS
+        let backgroundTraits = ["My friends know they can rely on me, no matter what.","I work hard so that I can play hard when the work is done.","I enjoy sailing into new ports and making new friends over a flagon of ale.","I stretch the truth for the sake of a good story.","To me, a tavern brawl is a nice way to get to know a new city.","I never pass up a friendly wager.","My language is as foul as an otyugh nest.","I like a job well done, especially if I can convince someone else to do it."];
+        let chosenTrait = backgroundTraits[Math.floor(Math.random() * backgroundTraits.length)];
+        document.getElementById("trait").innerHTML = `<b>Personality trait:</b> ${chosenTrait}`;
+        //BACKGROUND IDEALS
+        if(playerAlignmentSelected == "lawful good") {
+            let idealsArray = ["Aspiration. Someday I'll own my own ship and chart my own destiny.","Respect. The thing that keeps a ship together is mutual respect between captain and crew.","Fairness. We all do the work, so we all share in the rewards."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "lawful neutral") {
+            let idealsArray = ["Aspiration. Someday I'll own my own ship and chart my own destiny.","Fairness. We all do the work, so we all share in the rewards.","People. I'm committed to my crewmates, not to ideals."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "lawful evil") {
+            let idealsArray = ["Aspiration. Someday I'll own my own ship and chart my own destiny.","Fairness. We all do the work, so we all share in the rewards.","Mastery. I'm a predator, and the other ships on the sea are my prey."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic good") {
+            let idealsArray = ["Aspiration. Someday I'll own my own ship and chart my own destiny.","Respect. The thing that keeps a ship together is mutual respect between captain and crew.","Freedom. The sea is freedom — the freedom to go anywhere and do anything."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic neutral") {
+            let idealsArray = ["Aspiration. Someday I'll own my own ship and chart my own destiny.","Freedom. The sea is freedom — the freedom to go anywhere and do anything.","People. I'm committed to my crewmates, not to ideals."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "chaotic evil") {
+            let idealsArray = ["Aspiration. Someday I'll own my own ship and chart my own destiny.","Freedom. The sea is freedom — the freedom to go anywhere and do anything.","Mastery. I'm a predator, and the other ships on the sea are my prey."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "neutral good") {
+            let idealsArray = ["Aspiration. Someday I'll own my own ship and chart my own destiny.","Respect. The thing that keeps a ship together is mutual respect between captain and crew.","People. I'm committed to my crewmates, not to ideals."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "true neutral") {
+            let idealsArray = ["Aspiration. Someday I'll own my own ship and chart my own destiny.","People. I'm committed to my crewmates, not to ideals."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        } else if(playerAlignmentSelected == "neutral evil") {
+            let idealsArray = ["Aspiration. Someday I'll own my own ship and chart my own destiny.","Mastery. I'm a predator, and the other ships on the sea are my prey.","People. I'm committed to my crewmates, not to ideals."];
+            let chosenIdeal = idealsArray[Math.floor(Math.random() * idealsArray.length)];
+            document.getElementById("ideal").innerHTML = `<b>Ideal:</b> ${chosenIdeal}`;
+        }
+    }
 
 
 //LX. ARRAY FILTERS TO REMOVE ANY DUPLICATES THAT MIGHT REMAIN
